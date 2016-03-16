@@ -1,18 +1,24 @@
 {
-  "name": "TweetBlog",
+  "name": "tweetblog",
   "version": "0.1.0",
   "description": "TweetBlog",
   "main": "hello-world-server.js",
   "scripts": {
     "test": "echo \"Error: no test specified! Configure in package.json\" && exit 1"
   },
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/swapnilgai/TweetGetWay.git"
+  },
   "keywords": [
     "node.js",
     "eclipse",
     "nodeclipse"
   ],
-  "author": "",
+  "author": "Swapnil",
   "license": "MIT",
-  "readmeFilename": "README.md"
+  "bugs": {
+    "url": "https://github.com/swapnilgai/TweetGetWay/issues"
+  },
+  "homepage": "https://github.com/swapnilgai/TweetGetWay#readme"
 }

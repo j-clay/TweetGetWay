@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
+<html>
+<head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta charset="utf-8">
 		<title>Login</title>
@@ -10,7 +10,8 @@
 		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
 	
 		<link href="css/styles.css" rel="stylesheet">
-	</head>
+
+</head>
 <body>
 
 <header class="navbar navbar-default navbar-fixed-top" role="banner">
@@ -58,58 +59,39 @@
   </div>
 </header>
 
-<br />
-
-	<div class="container" style="max-height: 90vh;">
+<div class="container" style="max-height: 90vh;">
 		<div class="row">
 
-			<div class="col-md-4 col-md-push-9">
+			<div class="col-md-4 col-md-push-9 sidebar-bg">
 				<div id="sidebar">
-					<form id="f1" class="form-signin" action="/dashboard" method="GET">
-						<h2 id="hd" class="form-signin-heading">Sign in</h2>
+					<form id="f1" class="form-signin">
+						<h2 id="hd" class="form-signin-heading">Create your Account</h2>
 
 						<input type="email" id="inputEmail" class="form-control"
-							placeholder="Email address" required autofocus> <br /> <input
-							type="password" id="inputPassword" class="form-control"
-							placeholder="Password" required> <br />
-						<button class="btn btn-lg btn-primary btn-block" id="Signin"
-							type="submit">Sign in</button>
+							placeholder="Email address" required autofocus> <label
+							id="labelError" class="control-label" for="inputEmail"></label> <br />
+
+						<input type="password" id="inputPassword" class="form-control"
+							placeholder="Password" required> <br /> <input
+							type="text" id="inputFname" class="form-control"
+							placeholder="First Name" required> <br /> <input
+							type="text" id="inputLname" class="form-control"
+							placeholder="last Name" required> <br /> <input
+							type="text" id="datepicker" class="form-control"
+							placeholder="Birthdate" required> <br /> <br />
+
+
+						<button class="btn btn-lg btn-primary btn-block" id="Signup"
+							type="submit">Sign up</button>
+
 						<div id="link">
-							<a id="crtLink" href="/signUp">Create account</a>
+							<a id="crtLink" href="/">Back to Signin</a>
 						</div>
+
 					</form>
 				</div>
 			</div>
 
-			<div class="col-md-8 col-md-pull-4">
-				<div id="main">
-					<div id="post" class="post"></div>
-				</div>
-			</div>
-		</div>
-	</div>
 
 </body>
-
-<div class="container">
-    <div class="row">
-      <div class="col-sm-6">
-        <ul class="list-inline">
-          <li><i class="icon-facebook icon-2x"></i></li>
-          <li><i class="icon-twitter icon-2x"></i></li>
-          <li><i class="icon-google-plus icon-2x"></i></li>
-          <li><i class="icon-pinterest icon-2x"></i></li>
-        </ul>
-        
-      </div>
-      <div class="col-sm-6">
-          <p class="pull-right">Built with <i class="icon-heart-empty"></i> at <a href="http://www.bootply.com">Bootply</a></p>      
-      </div>
-    </div>
-  </div>
-</footer>
-	<!-- script references -->
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-	</body>
 </html>

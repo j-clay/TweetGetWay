@@ -1,0 +1,75 @@
+{
+  "users": [
+    {
+      "_id": "1",
+      "isActive": false,
+      "name": "Jonathan Clay",
+      "gender": "male",
+      "email": "jon@clay.com",
+      "password": "",
+      "approver": false
+    },
+    {
+      "_id": "2",
+      "isActive": false,
+      "name": "Swapnil Gaidhankar",
+      "gender": "male",
+      "email": "swapnil@gaidhankar.com",
+      "password": "",
+      "approver": false
+    },
+    {
+      "_id": "3",
+      "isActive": false,
+      "name": "Freddy Aklobessi",
+      "gender": "male",
+      "email": "freddy@aklobessi.com",
+      "password": "",
+      "approver": false
+    },
+    {
+      "_id": "4",
+      "isActive": false,
+      "name": "Gargi Kulkarni",
+      "gender": "female",
+      "email": "gargi@kulkarni.com",
+      "password": "",
+      "approver": false
+    },
+    {
+      "_id": "5",
+      "isActive": false,
+      "name": "Gargi Kulkarni",
+      "gender": "female",
+      "email": "gargi@kulkarni.com",
+      "password": "",
+      "approver": false
+    }
+  ],
+  "posts": [
+    {
+      "id": "1",
+      "message": "",
+      "votes": "",
+      "approved": false
+    },
+    {
+      "id": "2",
+      "message": "",
+      "votes": "",
+      "approved": false
+    },
+    {
+      "id": "3",
+      "message": "",
+      "votes": "",
+      "approved": false
+    },
+    {
+      "id": "4",
+      "message": "",
+      "votes": "",
+      "approved": false
+    }
+  ]
+}
