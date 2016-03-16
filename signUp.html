@@ -11,7 +11,48 @@
 	
 		<link href="css/styles.css" rel="stylesheet">
 
+
+
+
+<script src="js/jquery-1.12.1.min.js"></script>
+	
+	<script src="js/bootstrap.min.js"></script>
+<script>
+
+$( document ).ready(function() {
+    //console.log( "ready!" );
+    
+});
+
+$("#Signup").click(function(){
+	alert("hi");
+	
+	var email = $("#inputEmail").val();
+    var password = $("#inputPassword").val();
+    
+    if(email=='' || password== '' ){
+    	alert('Please enter details');
+    	if(email==''){$("#inputEmail").focus();}
+    	if(password==''){$("#inputPassword").focus();}
+    	alert("hii2");
+    	return false;
+    }
+
+       alert(3);	
+       return false;
+
+    });
+
+
+</script>
+
+
+
+
 </head>
+
+
+
 <body>
 
 <header class="navbar navbar-default navbar-fixed-top" role="banner">

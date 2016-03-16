@@ -1,10 +1,39 @@
 var express = require('express');
 var path = require('path');
-var session = require('express-session');
+var session = require('client-sessions');
 var fs = require("fs");
 var app = express();
 
+
+// --- config
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+app.use(session({
+	  cookieName: 'session',
+	  secret: 'random_string_goes_here',
+	  duration: 30 * 60 * 1000,
+	  activeDuration: 5 * 60 * 1000,
+	}));
+
+//--- web servisess
+
+
+app.post('/login', function(req, res) {
+	  User.findOne({ email: req.body.email }, function(err, user) {
+	    if (!user) {
+	      res.render('login.jade', { error: 'Invalid email or password.' });
+	    } else {
+	      if (req.body.password === user.password) {
+	        res.redirect('/dashboard');
+	      } else {
+	        res.render('login.jade', { error: 'Invalid email or password.' });
+	      }
+	    }
+	  });
+	});
+
+
 app.get('/',function(req,res){
     
 
@@ -26,22 +55,5 @@ function getAllUsers(){
         return jsonContent.users;
 };
 
-/*function getAllUsers(){
-    var users;
-   ajax({
-        url: "http://localhost:3000/users",
-        type: "GET",
-        dataType: "json",
-        success: function(data) {
-            users = parseJSON(data);
-        },
-        error: function(xhr, textStatus, errorThrown) {
-            window.alert("Error" + xhr + textStatus + errorThrown);
-        }
-    });  
-    
-    return users;
-    
-};*/
 
-app.listen(4000);
+app.listen(7000);

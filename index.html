@@ -1,5 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
+
+<script src="js/jquery-1.12.1.min.js"></script>
+	
+	<script src="js/bootstrap.min.js"></script>
+		
+<script>
+
+$( document ).ready(function() {
+    //console.log( "ready!" );
+    
+});
+
+function login(){
+	alert("hi");
+	var email = $("#inputEmail").val();
+    var password = $("#inputPassword").val();
+    
+    if(email=='' || password== '' ){
+    	alert('Please enter details');
+    	if(email==''){$("#inputEmail").focus();}
+    	if(password==''){$("#inputPassword").focus();}
+    	return false;
+    }
+
+    alert(email);	
+
+ 
+        $.ajax({
+            url: 'http://localhost:7000/users',
+            type: 'POST',
+            contentType: 'application/json',
+            
+            dataType: 'json',
+            success: function(data) {
+               // alert("ajax: "+data.name);
+                console.log("ajax : "+email);
+              //  $(".demo-list-action").append(loadActorData(data));
+            },
+            error: function(xhr, textStatus, errorThrown) {
+                alert("Error" + xhr + textStatus + errorThrown);
+            }
+        });
+
+    }
+
+
+</script>
+
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<meta charset="utf-8">
@@ -7,65 +56,17 @@
 		<meta name="generator" content="Bootply" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+		<!--  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet"> -->
 	
 		<link href="css/styles.css" rel="stylesheet">
 	</head>
 <body>
-
-<header class="navbar navbar-default navbar-fixed-top" role="banner">
-  <div class="container">
-    <div class="navbar-header">
-      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a href="/" class="navbar-brand">Home</a>
-    </div>
-    <nav class="collapse navbar-collapse" role="navigation">
-      <ul class="nav navbar-nav">
-        <li>
-          <a href="#">Category</a>
-        </li>
-        <li>
-          <a href="#">Category</a>
-        </li>
-        <li>
-          <a href="#">Category</a>
-        </li>
-        <li>
-          <a href="#">Category</a>
-        </li>
-      </ul>
-      <ul class="nav navbar-right navbar-nav">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-search"></i></a>
-          <ul class="dropdown-menu" style="padding:12px;">
-            <form class="form-inline">
-            	<div class="input-group">
-                  <input type="text" class="form-control" placeholder="Search for...">
-                  <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">Go!</button>
-                  </span>
-            	</div>
-            </form>
-          </ul>
-        </li>
-      </ul>
-    </nav>
-  </div>
-</header>
-
-<br />
-
 	<div class="container" style="max-height: 90vh;">
 		<div class="row">
 
 			<div class="col-md-4 col-md-push-9">
 				<div id="sidebar">
-					<form id="f1" class="form-signin" action="/dashboard" method="GET">
+					<form id="f1" class="form-signin">
 						<h2 id="hd" class="form-signin-heading">Sign in</h2>
 
 						<input type="email" id="inputEmail" class="form-control"
@@ -73,7 +74,7 @@
 							type="password" id="inputPassword" class="form-control"
 							placeholder="Password" required> <br />
 						<button class="btn btn-lg btn-primary btn-block" id="Signin"
-							type="submit">Sign in</button>
+							type="submit"v onclick="login()">Sign in</button>
 						<div id="link">
 							<a id="crtLink" href="/signUp">Create account</a>
 						</div>
@@ -88,12 +89,5 @@
 			</div>
 		</div>
 	</div>
-
 </body>
-
-
-	<!-- script references -->
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-	</body>
 </html>
