@@ -24,24 +24,29 @@ function login(){
     	if(password==''){$("#inputPassword").focus();}
     	return false;
     }
-
-    alert(email);	
-
  
         $.ajax({
-            url: 'http://localhost:7000/login',
+            url: 'http://localhost:7001/login',
             type: 'POST',
             contentType: 'application/json',
-            
+           
+            data: JSON.stringify({
+                email: email,
+                password: password
+            }),
             dataType: 'json',
             success: function(data) {
-               // alert("ajax: "+data.name);
-                console.log("ajax : "+email);
-              //  $(".demo-list-action").append(loadActorData(data));
+               $.each(data, function(x, value) {
+                   //console.log(data);
+                  alert("return email is ::  "+value.email)
+
+               });
+               // $(".demo-list-action").append(loadActorData(data));
             },
             error: function(xhr, textStatus, errorThrown) {
                 alert("Error" + xhr + textStatus + errorThrown);
             }
+           
         });
 
     }

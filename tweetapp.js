@@ -3,11 +3,14 @@ var path = require('path');
 var session = require('client-sessions');
 var fs = require("fs");
 var app = express();
+var bodyParser =   require("body-parser");
+var request = require("request");
 
 
 // --- config
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.use(session({
 	  cookieName: 'session',
@@ -18,19 +21,51 @@ app.use(session({
 
 //--- web servisess
 
+function getAllUsers(users){	
+    request.get("http://localhost:3000/users", function (err, res, body) {
+    if (!err) {	 
+         users = JSON.parse(body);
+    }
 
-app.post('/login', function(req, res) {
-	  User.findOne({ email: req.body.email }, function(err, user) {
-	    if (!user) {
-	      res.render('login.jade', { error: 'Invalid email or password.' });
-	    } else {
-	      if (req.body.password === user.password) {
-	        res.redirect('/dashboard');
+});
+    console.log("get json data : " +JSON.parse(body)); 
+    return users;
+}
+
+function postUser(users)
+{
+	request.post("http://localhost:3000/users", function (err, res, body) {
+		 console.log("post enter json data : " +users);
+		    if (!err) {
+		    	users = JSON.parse(body);
+		    }
+		    console.log("post after enter json data : " +users);
+		    });	
+	
+	return users;
+}
+
+app.use('/login', function(req, res) {
+	
+	var result = JSON.stringify(req.body);
+	 console.log("email : "+result);
+	 
+	if(result.email!==null && result.password !==null)
+		 {
+		
+		    var cuser = postUser();
+		    console.log("psdt out json data : "+cuser);
+		    
+		    var json = getAllUsers();
+		    
+			var allUsers = JSON.stringify(json);
+			
+			console.log("json data : "+allUsers);
+			return json;	
+	    
 	      } else {
 	        res.render('login.jade', { error: 'Invalid email or password.' });
 	      }
-	    }
-	  });
 	});
 
 
@@ -56,4 +91,4 @@ function getAllUsers(){
 };
 
 
-app.listen(7000);
+app.listen(7001);
