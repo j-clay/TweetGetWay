@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<script src="js/jquery-1.12.1.min.js"></script>
+
+	<script src="js/bootstrap.min.js"></script>
+
+<script>
+
+
+
+
+function updateSessionData(session)
+{
+	$.ajax({
+							 url: 'http://localhost:3000/session/'+1,
+							 type: 'PUT',
+							 contentType: 'application/json',
+							 dataType:'json',
+							 data: JSON.stringify({
+									user : session,
+									isactive : true
+							 }),
+							 success: function(data) {
+								 alert("success"+session);
+								 alert("data ::: "+data.id)
+								 if(data.id!== 'temp')
+									 {
+								 		var url = "http://localhost:7012/dashboard.html";
+									 	window.location.replace(url);
+									 }
+							 },
+
+							 error: function(xhr, textStatus, errorThrown) {
+								 
+									 console.log("Error" + xhr + textStatus + errorThrown);
+							 }
+			 });
+}
+
+
+
+function login(){
+
+	alert("hiiiiii");
+	$("#f1").submit(function(event){
+
+	    event.preventDefault();
+	})
+	
+    	var email = $("#inputEmail").val();
+      var password = $("#inputPassword").val();
+      var session=null;
+
+    if(email!='' || password!= '' ){
+    	//alert('Please enter details');
+    	if(email==''){$("#inputEmail").focus();}
+    	if(password==''){$("#inputPassword").focus();}
+    
+      alert("email : "+email)
+		$.ajax({
+				url: 'http://localhost:3000/users/'+email,
+				type: "GET",
+				contentType:'application/json',
+				dataType:'json',
+				success: function(data) {
+					if(data.id===email)
+						{
+							session = email;
+							updateSessionData(session);
+						}
+				},
+				error: function(xhr, textStatus, errorThrown) {
+					 console.log("Error" + xhr + textStatus + errorThrown);
+				}
+		});
+    }
+  }
+
+
+</script>
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>Login</title>
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<!--  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet"> -->
+
+		<link href="css/styles.css" rel="stylesheet">
+	</head>
+<body>
+	<div class="container" style="max-height: 90vh;">
+		<div class="row">
+
+			<div class="col-md-4 col-md-push-9">
+				<div id="sidebar">
+					<form id="f1" class="form-signin">
+						<h2 id="hd" class="form-signin-heading">Sign in</h2>
+
+						<input type="text" id="inputEmail" class="form-control"
+							placeholder="username" required autofocus> <br /> <input
+							type="password" id="inputPassword" class="form-control"
+							placeholder="Password" required> <br />
+						<button class="btn btn-lg btn-primary btn-block" id="Signin"
+							type="submit"v onclick="login()">Sign in</button>
+						<div id="link">
+							<a id="crtLink" href="/signUp">Create account</a>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<div class="col-md-8 col-md-pull-4">
+				<div id="main">
+					<div id="post" class="post"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
