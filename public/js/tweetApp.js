@@ -192,11 +192,8 @@ function getCurrentDate()
 	            }
 	    	});
 	       
-
 	        
-	   
-	   function  updateDb(votes, date, text, postedOnTwitter, createdby, approvedBy)
-               
+	   function  updateDb(votes, date, text, postedOnTwitter, createdby, approvedBy)   
 	   {
 	       $.ajax({
 	                url: "http://localhost:3000/blog/"+id,

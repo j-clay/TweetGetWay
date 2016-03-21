@@ -1,52 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-		<meta charset="utf-8">
-		<title>Login</title>
-		<meta name="generator" content="Bootply" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
-	
-		<link href="css/styles.css" rel="stylesheet">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Community Twitter Gateway</title>
+
+<meta name="description"
+	content="Source code generated using layoutit.com">
+<meta name="author" content="LayoutIt!">
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/styles.css" rel="stylesheet">
+<link href="css/tweetApp.css" rel="stylesheet">
+<script src="js/jquery-1.12.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery-ui.js"></script>
+
+<script src= "js/signup.js"></script>
 
 </head>
-
-
-
-<script>
-
-$( document ).ready(function() {
-    //console.log( "ready!" );
-    
-});
-
-$("button#Signup").click(function(){
-	alert("hi");
-	
-	var email = $("#inputEmail").val();
-    var password = $("#inputPassword").val();
-    
-    if(email=='' || password== '' ){
-    	alert('Please enter details');
-    	if(email==''){$("#inputEmail").focus();}
-    	if(password==''){$("#inputPassword").focus();}
-    	alert("hii2");
-    	return false;
-    }
-
-       alert(3);	
-       return false;
-
-    });
-
-
-</script>
-
 <body>
-
-<header class="navbar navbar-default navbar-fixed-top" role="banner">
+	<header class="navbar navbar-default navbar-fixed-top" role="banner">
   <div class="container">
     <div class="navbar-header">
       <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
@@ -55,41 +31,85 @@ $("button#Signup").click(function(){
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="/" class="navbar-brand">Home</a>
+      <a href="/" class="navbar-brand">TweetApp</a>
     </div>
     <nav class="collapse navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
         <li>
-          <a href="#">Category</a>
+          <a href="#">Dashboard</a>
         </li>
         <li>
-          <a href="#">Category</a>
+          <a href="#">About</a>
         </li>
-        <li>
-          <a href="#">Category</a>
-        </li>
-        <li>
-          <a href="#">Category</a>
-        </li>
+        
+       
       </ul>
       <ul class="nav navbar-right navbar-nav">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-search"></i></a>
-          <ul class="dropdown-menu" style="padding:12px;">
-            <form class="form-inline">
-            	<div class="input-group">
-                  <input type="text" class="form-control" placeholder="Search for...">
-                  <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">Go!</button>
-                  </span>
-            	</div>
-            </form>
-          </ul>
+        
+          <li>
+          <a href="http://localhost:7012/index.html">Signout</a>
         </li>
       </ul>
     </nav>
   </div>
 </header>
+
+
+
+<body>
+</script>
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Community Twitter Gateway</title>
+
+<meta name="description"
+	content="Source code generated using layoutit.com">
+<meta name="author" content="LayoutIt!">
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/styles.css" rel="stylesheet">
+<link href="css/tweetApp.css" rel="stylesheet">
+<script src="js/jquery-1.12.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery-ui.js"></script>
+
+</head>
+<body>
+	<header class="navbar navbar-default navbar-fixed-top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand">TweetApp</a>
+    </div>
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="#">Dashboard</a>
+        </li>
+        <li>
+          <a href="#">About</a>
+        </li>
+        
+       
+      </ul>
+      <ul class="nav navbar-right navbar-nav">
+        
+          <li>
+          <a href="http://localhost:7012/index.html">SignIn</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>	
 
 <div class="container" style="max-height: 90vh;">
 		<div class="row">
@@ -99,7 +119,7 @@ $("button#Signup").click(function(){
 					<form id="f1" class="form-signin">
 						<h2 id="hd" class="form-signin-heading">Create your Account</h2>
 
-						<input type="email" id="inputEmail" class="form-control"
+						<input type="text" id="inputEmail" class="form-control"
 							placeholder="Email address" required autofocus> <label
 							id="labelError" class="control-label" for="inputEmail"></label> <br />
 
@@ -108,13 +128,11 @@ $("button#Signup").click(function(){
 							type="text" id="inputFname" class="form-control"
 							placeholder="First Name" required> <br /> <input
 							type="text" id="inputLname" class="form-control"
-							placeholder="last Name" required> <br /> <input
-							type="text" id="datepicker" class="form-control"
-							placeholder="Birthdate" required> <br /> <br />
+							placeholder="last Name" required> <br />
 
 
 						<button class="btn btn-lg btn-primary btn-block" id="Signup"
-							type="submit">Sign up</button>
+							type="submit" onclick="signup()">Sign up</button>
 
 						<div id="link">
 							<a id="crtLink" href="/TweetGetWay/index.html">Back to Signin</a>
