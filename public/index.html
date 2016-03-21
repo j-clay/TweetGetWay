@@ -7,10 +7,6 @@
 	<script src="js/bootstrap.min.js"></script>
 
 <script>
-
-
-
-
 function updateSessionData(session)
 {
 	$.ajax({
@@ -31,27 +27,20 @@ function updateSessionData(session)
 									 	window.location.replace(url);
 									 }
 							 },
-
 							 error: function(xhr, textStatus, errorThrown) {
 								 
 									 console.log("Error" + xhr + textStatus + errorThrown);
 							 }
 			 });
 }
-
-
-
 function login(){
-
 	$("#f1").submit(function(event){
-
 	    event.preventDefault();
 	})
 	
     	var email = $("#inputEmail").val();
       var password = $("#inputPassword").val();
       var session=null;
-
     if(email!='' || password!= '' ){
     	//alert('Please enter details');
     	if(email==''){$("#inputEmail").focus();}
@@ -76,8 +65,6 @@ function login(){
 		});
     }
   }
-
-
 </script>
 
 <head>
@@ -124,9 +111,8 @@ function login(){
       </ul>
       <ul class="nav navbar-right navbar-nav">
         
-          <li>
-          <a href="http://localhost:7012/Sigup.html">Sign UP</a>
-        </li>
+          <button class="btn dislike btn-warning"><span class="" aria-hidden="true"></span> Sign Up 
+          <span class="dislikes"></span></button>
       </ul>
     </nav>
   </div>

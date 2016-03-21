@@ -1,47 +1,43 @@
 var express = require('express');
 var path = require('path');
-var session = require('client-sessions');
-var fs = require("fs");
+var bodyParser = require("body-parser");
 var app = express();
-var bodyParser =   require("body-parser");
-var request = require("request");
-var email;
-var request1 = require('request-json');
+var Twitter = require('twitter');
+ var client = new Twitter({
+        consumer_key: 'S2869yTRZhlJKvDo1T79iSvFR',
+        consumer_secret: 'HJpcNm6sIetiuZRtzpCQb5XuZwSW6orQo8UO5Iyh2VoYzYaR8t',
+        access_token_key: '711730133019680769-AdrIKRiWQgz15nEcyRQjVxQMZmfdgh0',
+        access_token_secret: 'iHr1ufUNxhPA9imvvVWpMmtZ51IAzqehh7rDlpVXTv7zb'
+    });
+app.use(bodyParser.json());
+
 
 // --- config
-app.use(express.static(path.join(__dirname, 'public')))
-
-app.use(bodyParser.urlencoded({extended: true}));
-
-app.use(session({
-	  cookieName: 'session',
-	  secret: 'random_string_goes_here',
-	  duration: 30 * 60 * 1000,
-	  activeDuration: 5 * 60 * 1000,
-	}));
+app.use(express.static(path.join(__dirname, 'public')));
 
 
-//--- web servisess
+app.get('/',function(req,res){
+    res.sendFile( __dirname + "/" + "index.html" );
+});
 
+app.get('/signUp',function(req,res){
+    res.sendFile( __dirname + "/" + "signUp.html" );
+});
 
-//app.use('/login', function(req, res) {
-//		
-//	res.sendFile( __dirname + "/" + "index.html" );
-//	});
-//
-//
-//app.get('/',function(req,res){
-//    
-//    res.sendFile( __dirname + "/" + "index.html" );
-//});
-//
-//app.get('/signUp',function(req,res){
-//    res.sendFile( __dirname + "/" + "signUp.html" );
-//});
-//
-//app.get('/dashboard',function(req,res){
-//  
-//    res.sendFile( __dirname + "/" + "dashboard.html" );
-//});
+app.get('/dashboard',function(req,res){
+    res.sendFile( __dirname + "/" + "dashboard.html" );
+});
+
+app.post("/postTweet",function (req,res) {
+    var tweet = req.body.status;
+
+    client.post('statuses/update', {status: tweet },  function(error, tweet, response){
+        /// if(error) throw error;
+        console.log(tweet);  // Tweet body. 
+        console.log(response);  // Raw response object. 
+    });
+
+    
+})
 
 app.listen(7012);

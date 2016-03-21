@@ -2,6 +2,12 @@
   width:auto;
 }
 
+
+a:hover {
+  transform: scale(1.3);
+}
+
+
 body {
   padding-top:50px;
 }
@@ -60,8 +66,10 @@ a,a:hover {
 }
 
 .panel {
-  border-color:transparent;
-  border-radius:0;
+    border-color: transparent;
+    border-radius: 0;
+    width: 90%;
+    margin: auto;
 }
 
 .thumbnail {
@@ -99,6 +107,16 @@ a,a:hover {
   opacity:.9;
   padding:6px;
   color:#fff;
+}
+
+#twitter{
+    max-width: 80%;
+    float: right;
+    padding-right: 50px;
+}
+
+#dForm{
+  margin: auto;
 }
     
 .btn-twitter {background-color:#4099FF;color:#fff;}
