@@ -1,154 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Community Twitter Gateway</title>
+    <title>Community Twitter Gateway </title>
 
-<meta name="description"
-	content="Source code generated using layoutit.com">
-<meta name="author" content="LayoutIt!">
+    <meta name="description" content="Source code generated using layoutit.com">
+    <meta name="author" content="LayoutIt!">
 
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/styles.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
 <link href="css/tweetApp.css" rel="stylesheet">
-<script src="js/jquery-1.12.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery-ui.js"></script>
-<script src="js/tweetApp.js"></script>
-</head>
-<body>
-	<header class="navbar navbar-default navbar-fixed-top" role="banner">
-  <div class="container">
+    <script src="js/jquery-1.12.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+     <script src="js/tweetApp.js"></script>
+  </head>
+  <body>
+          <header class="navbar navbar-default navbar-fixed-top" role="banner">
+  <div class="container-fluid">
     <div class="navbar-header">
-      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a href="/" class="navbar-brand">TweetApp</a>
+      
+
+     <div class="title"><h1>TweetApp<h1></div>
+     
     </div>
     <nav class="collapse navbar-collapse" role="navigation">
-      <ul class="nav navbar-nav">
-        <li>
-          <a href="#">Dashboard</a>
-        </li>
-        <li>
-          <a href="#">About</a>
-        </li>
-        
-       
-      </ul>
       <ul class="nav navbar-right navbar-nav">
-        
-          <li>
-          <a href="http://localhost:7012/index.html">Signout</a>
-        </li>
+           <a href="/" class="navbar-brand">Dashboard</a>
+           <a href="/" class="navbar-brand">About</a>
+        <a id="crtLink" href="/signUp" class="navbar-brand">Sign Up</a>
       </ul>
     </nav>
   </div>
 </header>
-	
-	<div class="container-fluid content">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="page-header">
-					<h2>
-						Twitter Gateway <small>tweet interface</small>
-					</h2>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-6">
-				<div class="page-header">
-					<h1>
-						Create Tweet <small>Post tweet to check</small>
-					</h1>
-				</div>
-				<form role="form" id="tweetForm">
-					<div class="form-group">
-
-						<label for="exampleInputEmail1"> Tweet </label>
-						<textarea class="form-control tweet" rows="4"></textarea>
-					</div>
-					<button class="btn btn-lg btn-primary btn-block tweetPost"
-						id="tweet" type="submit">Post</button>
-				</form>
-			</div>
-			<div class="col-md-6 blogs">
-				<div class="page-header">
-					<h1>New tweets</h1>
-				</div>
-
-				<div class="panel panel-primary">
-					<div class="panel-heading">
-						<h3 class="panel-title">Email</h3>
-					</div>
-					<div class="panel-body">Tweet</div>
-					<div id="demo" class="panel-footer textright">
-
-
-						<button class="btn dislike btn-warning">
-							<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-							Votes <span class="likes">0</span>
-						</button>
-
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-6">
-				<div class="page-header">
-					<h1>Already Voted</h1>
-				</div>
-				<div class="panel panel-primary">
-					<div class="panel-heading">
-						<h3 class="panel-title">Email</h3>
-					</div>
-					<div class="panel-body">Tweet</div>
-					<div id="demo" class="panel-footer textright">
-
-						<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-						Likes <span class="likes">0</span> <span
-							class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
-						Dislikes <span class="dislikes">0</span>
-
-					</div>
-				</div>
-				<div class="panel panel-primary">
-					<div class="panel-heading">
-						<h3 class="panel-title">Email</h3>
-					</div>
-					<div class="panel-body">Tweet</div>
-					<div id="demo" class="panel-footer textright">
-
-						<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-						Likes <span class="likes">0</span> <span
-							class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
-						Dislikes <span class="dislikes">0</span>
-
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="page-header">
-					<h1>Twitter Account</h1>
-				</div>
-				<div>
-					<a class="twitter-timeline" href="https://twitter.com/Dhrumit473"
-						data-widget-id="711317173029875713" data-screen-name="Dhrumit473">Tweets
-						by @Dhrumit473</a>
-					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-				</div>
+  	<div class="container-fluid content">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="page-header">
+				<h1>
+					Community Twitter Gateway <small>An interface for tweeting tweets</small>
+				</h1>
 			</div>
 		</div>
 	</div>
-</body>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="page-header">
+				<h1>
+					Create Tweet <small>Post tweet to check</small>
+				</h1>
+			</div>
+			<form role="form" id="tweetForm">
+				<div class="form-group">
+					 
+					<label for="exampleInputEmail1">
+						Tweet
+					</label>
+					<textarea class="form-control tweet" rows="4"></textarea>
+				</div>
+				<button class="btn btn-lg btn-primary btn-block tweetPost" id="tweet"
+							type="submit">Post</button>
+			</form>
+		</div>
+		<div class="col-md-6">
+			<div class="page-header">
+				<h1>
+					Already Voted
+				</h1>
+			</div>
+			
+			<dic class="voted"></div>
+		</div>
+	</div>
+	<div class="row">
+		
+        <div class="col-md-6">
+			<div class="page-header">
+				<h1>
+					New tweets
+				</h1>
+			</div>
+			<div class="blogs" id="blogs"></div>
+		</div>
+		<div class="col-md-6">
+			<div class="page-header">
+				<h1>
+					Twitter Account
+				</h1>
+			</div>
+		</div>
+	
+
+				<a class="twitter-timeline" href="https://twitter.com/Dhrumit473" data-widget-id="711317173029875713" data-screen-name="Dhrumit473">Tweets by @Dhrumit473</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+			</div>
+		</div>
+	</div>
+</div>
+  </body>
 </html>
-Status API Training Shop Blog About © 2016 GitHub, Inc. Terms Privacy
-Security Contact Help

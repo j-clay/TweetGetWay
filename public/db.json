@@ -2,59 +2,54 @@
   "blog": [
     {
       "id": 2,
-      "votes": 2,
-      "date": "03/19/2016",
-      "text": "hi tweet 1",
-      "postedOnTwitter": false,
-      "createdby": "martial",
-      "approvedBy": "sss, xxx"
-    },
-    {
-      "id": 2,
       "votes": 1,
       "date": "03/20/2016",
       "text": "hi tweet 2",
       "postedOnTwitter": false,
-      "createdby": "martial",
-      "approvedBy": "sss"
+      "createdby": "admin",
+      "approvedBy": "admin"
     },
     {
-      "votes": 0,
+      "votes": 1,
       "date": "03/19/2016",
-      "text": "n svjnjcnvjncxjvnjcnxjnvjncjvnjn jnd",
+      "text": "bdjsbc",
       "postedOnTwitter": false,
-      "createdby": "martial",
-      "approvedBy": "sss, xxx",
-      "id": 3
+      "createdby": "user",
+      "approvedBy": "user",
+      "id": 7
     },
     {
-      "votes": 0,
+      "votes": 1,
       "date": "03/19/2016",
-      "text": "vfsydbvhbshvbhfbvhb",
+      "text": "nakslcmk",
       "postedOnTwitter": false,
-      "createdby": "martial",
-      "approvedBy": "sss, xxx",
-      "id": 4
+      "createdby": "admin",
+      "approvedBy": "admin",
+      "id": 9
     },
     {
-      "votes": 0,
+      "votes": 2,
       "date": "03/19/2016",
-      "text": "yfvbdhjbvhbh",
+      "text": "cds ,cnd",
       "postedOnTwitter": false,
-      "createdby": "martial",
-      "approvedBy": "sss, xxx",
-      "id": 5
+      "createdby": "user",
+      "approvedBy": "user,admin",
+      "id": 10
     }
   ],
   "users": [
     {
-      "id": "amit",
-      "password": "amit"
+      "id": "admin",
+      "password": "admin"
+    },
+    {
+      "id": "user",
+      "password": "user"
     }
   ],
   "session": [
     {
-      "user": "amit",
+      "user": "admin",
       "isactive": true,
       "id": 1
     }
