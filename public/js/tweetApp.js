@@ -20,47 +20,54 @@ $(document).ready(function () {
 	
 	//To check current user
 function checkCurrentUser(id){	
-	var votedUsers = new Array();
-	var flag;
-	$.ajax({
+
+	var flag= function(){
+		var temp = true;
+		var votedUsers = new Array();
+		$.ajax({
         url: 'http://localhost:3000/blog/'+id,
         type: 'GET',
         dataType: 'json',
         success: function (data) {
-        	alert("approver : "+data.approvedBy);
-        	votedUsers = data.approvedBy.split();
-        	alert("user : "+votedUsers[0]);
+       
+        	var str = ""+data.approvedBy;
+        	votedUsers = str.split(",");
+         	//alert("approver : "+data.approvedBy+"   user : "+votedUsers[0]+"  created by :  "+data.createdby+" username : "+username);
+        	
         	if(data.createdby === username)
         		{
-        		  return false;
+        			temp = false;
         		}
         	else
         	{
-	
+        		//alert("in str : "+str);
         		for (str in votedUsers ) {
         		
         			if(str === username)
         	    	{
-        	    	    alert(str);
-        	    	    return false;
+        	    	    temp = false;
         	    	}
         	}
-        	}            	
+        	}
+        	
         },
         error: function (xhr, textStatus, errorThrown) {
             console.log("Error" + xhr + textStatus + errorThrown);
         }
 	});
+		return temp;
 	//alert("falg = "+flag);
+}();
+return flag;
 }
+
 
 function getCurrentDate()
 {
     var date = new Date(),
-        output = document.getElementById( 'output' ),
-        dateString = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear().toString().substr(2,2);
+        dateStr = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear().toString().substr(2,2);
 
-      return dateString;
+      return dateStr;
 }
 
 
@@ -76,12 +83,12 @@ function getCurrentDate()
 	                type: "POST",
 	                dataType: 'json',
 	                data: { 
-	                	votes: 0,
+	                	votes: 1,
 	                	date: getCurrentDate(), 
 	                	text: tweet, 
 	                	postedOnTwitter: false,
 	                	createdby: username, 
-	                	approvedBy: ""		
+	                	approvedBy: username		
 	                },
 	                success: function (data) {
 	                    $(".blogs").append(loadNewTweets(data));
@@ -124,7 +131,9 @@ function getCurrentDate()
 	        blog += "<div class=\"panel panel-primary\"><div class=\"panel-heading\"><h3 class=\"panel-title\">Tweets</h3>";
 	        blog += "</div><div class=\"panel-body\">" + tweet.text + "</div><div id=\"demo\"class=\"panel-footer textright\">";
 	       alert( "status : "+checkCurrentUser(tweet.id));
-	        if(checkCurrentUser(tweet.id))
+	       var result = checkCurrentUser(tweet.id);
+	       //alert("status : "+result);
+	       if(result)
 	    	   {
 		        blog += "<button class=\"btn like btn-warning\"><span class=\"glyphicon glyphicon-thumbs-up\" aria-hidden=\"true\"></span> Votes <span class=\"likes\" id=" + tweet.id + ">" + tweet.votes + "</span></button>";
 
@@ -155,14 +164,12 @@ function getCurrentDate()
 	    
 	    $(".blogs").on("click","button",function(){
 	        var id=this.lastChild.id;
+	        var parent=this.parentNode;
 	        var votes=this.lastChild.innerHTML;
-	        var date;
-	        var text;
-	        var postedOnTwitter;
-	        var createdby;
-	        var approvedBy;
+	       
 	        this.lastChild.innerHTML=parseInt(votes) + 1;
-	        
+
+	       
 	        $.ajax({
 	            url: 'http://localhost:3000/blog/' + id,
 	            type: 'GET',
@@ -177,6 +184,7 @@ function getCurrentDate()
 	    	        createdby = data.createdby;
 	    	        approvedBy = data.approvedBy+', '+username;
 	    	        
+	    	        updateDb(votes, date, text, postedOnTwitter, createdby, approvedBy);
 	    	    
 	            },
 	            error: function (xhr, textStatus, errorThrown) {
@@ -187,33 +195,31 @@ function getCurrentDate()
 
 	        
 	   
-	        
-	        alert("vaotes : "+votes+" date : "+date)
+	   function  updateDb(votes, date, text, postedOnTwitter, createdby, approvedBy)
+               
+	   {
 	       $.ajax({
 	                url: "http://localhost:3000/blog/"+id,
 	                type: "PUT",
 	                dataType: 'json',
 	                data: {
-	                	"votes": votes,
-	                    "date": date,
-	                    "text": text,
-	                    "postedOnTwitter": postedOnTwitter,
-	                    "createdby": createdby,
-	                    "approvedBy": approvedBy,
-	                    "id": id
+	                	votes: votes,
+	                    date: date,
+	                    text: text,
+	                    postedOnTwitter: postedOnTwitter,
+	                    createdby: createdby,
+	                    approvedBy: approvedBy,
+	                  
 	                      },
 	       success: function (data) {
            	
-              
-   	        
-   	        //alert("appvoved by"+approvedBy );
-   	        alert("vaotes  in put : "+data.votes+" date in : "+data.date)
            },
            error: function (xhr, textStatus, errorThrown) {
                console.log("Error" + xhr + textStatus + errorThrown);
            }
 
-	             });       
+	             }); 
+	   }
 	    });
-
+	
 	});

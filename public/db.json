@@ -1,40 +1,43 @@
 {
   "blog": [
     {
-      "id": 2,
       "votes": 1,
-      "date": "03/20/2016",
-      "text": "hi tweet 2",
-      "postedOnTwitter": false,
-      "createdby": "admin",
-      "approvedBy": "admin"
-    },
-    {
-      "votes": 1,
-      "date": "03/19/2016",
-      "text": "bdjsbc",
-      "postedOnTwitter": false,
-      "createdby": "user",
-      "approvedBy": "user",
-      "id": 7
-    },
-    {
-      "votes": 1,
-      "date": "03/19/2016",
-      "text": "nakslcmk",
+      "date": "3/20/16",
+      "text": "dshvbdksbvkjbds ",
       "postedOnTwitter": false,
       "createdby": "admin",
       "approvedBy": "admin",
-      "id": 9
+      "id": 12
+    },
+    {
+      "votes": 1,
+      "id": 13
+    },
+    {
+      "votes": 1,
+      "id": 14
+    },
+    {
+      "votes": 1,
+      "id": 15
     },
     {
       "votes": 2,
-      "date": "03/19/2016",
-      "text": "cds ,cnd",
+      "date": "3/20/16",
+      "text": "jkfnjvnknv",
       "postedOnTwitter": false,
-      "createdby": "user",
-      "approvedBy": "user,admin",
-      "id": 10
+      "createdby": "admin",
+      "approvedBy": "admin, admin",
+      "id": 16
+    },
+    {
+      "votes": 2,
+      "date": "3/20/16",
+      "text": "gggggg",
+      "postedOnTwitter": false,
+      "createdby": "admin",
+      "approvedBy": "admin, admin",
+      "id": 17
     }
   ],
   "users": [
