@@ -1,43 +1,22 @@
 {
   "blog": [
     {
-      "votes": 1,
-      "date": "3/20/16",
-      "text": "dshvbdksbvkjbds ",
-      "postedOnTwitter": false,
-      "createdby": "admin",
-      "approvedBy": "admin",
-      "id": 12
-    },
-    {
-      "votes": 1,
-      "id": 13
-    },
-    {
-      "votes": 1,
-      "id": 14
-    },
-    {
-      "votes": 1,
-      "id": 15
-    },
-    {
       "votes": 2,
-      "date": "3/20/16",
-      "text": "jkfnjvnknv",
+      "date": "3/21/16",
+      "text": "Hi",
       "postedOnTwitter": false,
-      "createdby": "admin",
-      "approvedBy": "admin, admin",
-      "id": 16
+      "createdby": "user1",
+      "approvedBy": "user1, admin",
+      "id": 1
     },
     {
-      "votes": 2,
-      "date": "3/20/16",
-      "text": "gggggg",
+      "votes": 1,
+      "date": "3/21/16",
+      "text": "hi1234",
       "postedOnTwitter": false,
-      "createdby": "admin",
-      "approvedBy": "admin, admin",
-      "id": 17
+      "createdby": "user1",
+      "approvedBy": "user1",
+      "id": 2
     }
   ],
   "users": [
@@ -46,56 +25,15 @@
       "password": "admin"
     },
     {
-      "id": "user",
-      "password": "user"
-    },
-    {
       "id": "user1",
       "password": "user1"
-    },
-    {
-      "{\"id\":\"user3\",\"password\":\"user3\"}": "",
-      "id": "6e3f8b10-d337-42c3-b57b-3e730d14d20c"
-    },
-    {
-      "id": "user3",
-      "password": "user3"
-    },
-    {
-      "id": "user4",
-      "password": "user4"
-    },
-    {
-      "id": "user5",
-      "password": "user"
-    },
-    {
-      "id": "hhhhh",
-      "password": "hhhhh"
-    },
-    {
-      "id": "kkkkkk",
-      "password": "kkkkkk"
-    },
-    {
-      "id": "ooooo",
-      "password": "ooooo"
-    },
-    {
-      "id": "ooooodssd",
-      "password": "dsdsfss"
     }
   ],
   "session": [
     {
-      "user": "ooooodssd",
+      "user": "admin",
       "isactive": true,
       "id": 1
-    },
-    {
-      "user": "kkkkkk",
-      "isactive": true,
-      "id": 2
     }
   ]
 }

@@ -7,64 +7,7 @@
 	<script src="js/bootstrap.min.js"></script>
 
 <script>
-function updateSessionData(session)
-{
-	$.ajax({
-							 url: 'http://localhost:3000/session/'+1,
-							 type: 'PUT',
-							 contentType: 'application/json',
-							 dataType:'json',
-							 data: JSON.stringify({
-									user : session,
-									isactive : true
-							 }),
-							 success: function(data) {
-								 alert("success"+session);
-								 alert("data ::: "+data.id)
-								 if(data.id!== 'temp')
-									 {
-								 		var url = "http://localhost:7012/dashboard.html";
-									 	window.location.replace(url);
-									 }
-							 },
-							 error: function(xhr, textStatus, errorThrown) {
-								 
-									 console.log("Error" + xhr + textStatus + errorThrown);
-							 }
-			 });
-}
-function login(){
-	$("#f1").submit(function(event){
-	    event.preventDefault();
-	})
-	
-    	var email = $("#inputEmail").val();
-      var password = $("#inputPassword").val();
-      var session=null;
-    if(email!='' || password!= '' ){
-    	//alert('Please enter details');
-    	if(email==''){$("#inputEmail").focus();}
-    	if(password==''){$("#inputPassword").focus();}
-    
-      alert("email : "+email)
-		$.ajax({
-				url: 'http://localhost:3000/users/'+email,
-				type: "GET",
-				contentType:'application/json',
-				dataType:'json',
-				success: function(data) {
-					if(data.id===email)
-						{
-							session = email;
-							updateSessionData(session);
-						}
-				},
-				error: function(xhr, textStatus, errorThrown) {
-					 console.log("Error" + xhr + textStatus + errorThrown);
-				}
-		});
-    }
-  }
+
 </script>
 
 <head>
@@ -84,7 +27,7 @@ function login(){
 <script src="js/jquery-1.12.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery-ui.js"></script>
-<script src="js/tweetApp.js"></script>
+<script src="js/login.js"></script>
 </head>
 <body>
 	<header class="navbar navbar-default navbar-fixed-top" role="banner">
@@ -104,15 +47,17 @@ function login(){
           <a href="#">Dashboard</a>
         </li>
         <li>
-          <a href="#">About</a>
+          <a href="http://localhost:7012/about.html">About</a>
         </li>
         
        
       </ul>
       <ul class="nav navbar-right navbar-nav">
         
-          <button class="btn dislike btn-warning"><span class="" aria-hidden="true"></span> Sign Up 
-          <span class="dislikes"></span></button>
+         <li>
+          <a href="http://localhost:7012/Sigup.html">SignUp</a>
+        </li>
+         
       </ul>
     </nav>
   </div>

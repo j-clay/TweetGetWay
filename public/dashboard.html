@@ -34,52 +34,41 @@
     <nav class="collapse navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
         <li>
-          <a href="#">Dashboard</a>
+          <a href="http://localhost:7012/dashboard.html">Dashboard</a>
         </li>
         <li>
-          <a href="#">About</a>
+          <a href="http://localhost:7012/about.html">About</a>
         </li>
         
        
       </ul>
       <ul class="nav navbar-right navbar-nav">
-          <button class="btn dislike btn-warning"><span class="" aria-hidden="true"></span> Signout 
-          <span class="dislikes"></span></button>
+          <a href="http://localhost:7012/index.html">Signout</a>  
       </ul>
     </nav>
   </div>
 </header>
 	
 	<div class="container-fluid content">
+		
 		<div class="row">
 			<div class="col-md-12">
-				<div class="page-header">
-					<h2>
-						Twitter Gateway <small>tweet interface</small>
-					</h2>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12">
-				<div class="page-header">
-					<h1>
-						Create Tweet <small>Post tweet to check</small>
-					</h1>
-				</div>
+			
 			<form role="form" id="tweetForm">
 			<div id="dForm">
 				<div class="form-group">
 					 
 					<label for="exampleInputEmail1">
-						Tweet
+							Lets Tweet!!
 					</label>
 					<textarea class="form-control tweet" rows="4"></textarea>
 				</div>
+				<span id="count">140</span>
 				<button class="btn btn-lg btn-primary btn-block tweetPost" id="tweet"
 							type="submit">Post</button>
 			</div>
 			</form>
+	<hr/>
 		</div>
 		<div class="col-md-6">
 			
@@ -94,48 +83,21 @@
 					Recent Tweets
 				</h1>
 			</div>
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-					<h3 class="panel-title">
-						Name
-					</h3>
-				</div>
-				<div class="panel-body">
-					Tweet
-				</div>
-				<div id="demo"class="panel-footer textright">
-					
-				    
-				    <button class="btn dislike btn-warning"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> Dislike <span class="dislikes">0</span></button>
-  
-				</div>
-			</div>
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-					<h3 class="panel-title">
-						Names
-					</h3>
-				</div>
-				<div class="panel-body">
-					Tweet
-				</div>
-				<div id="demo"class="panel-footer textright">
-					
-				    	
-				    <button class="btn dislike btn-warning"><span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> Dislike <span class="dislikes">0</span></button>
-  
-				</div>
-			</div>
+			<div class="blogs" id="f1"></div>
 		</div>
+		
+		
+		
 		<div class="col-md-6">
+		
 			<div class="page-header">
 				<h1>
 					Twitter Account
 				</h1>
 			</div>
 			<div id="twitter">
-				<a class="twitter-timeline" href="https://twitter.com/Dhrumit473" data-widget-id="711317173029875713" data-screen-name="Dhrumit473">Tweets by @Dhrumit473</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+				<a class="twitter-timeline" href="https://twitter.com/cpsc473_project" data-widget-id="712056994299924480">Tweets by @cpsc473_project</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>   
 			</div>
 		</div>
 	</div>

@@ -10,13 +10,31 @@ $(document).ready(function () {
 		success: function(data) {
 			
 			username = data.user;	
-		//	alert("user : "+username);
 			$("#user").html(username);
 		},
 		error: function(xhr, textStatus, errorThrown) {
 			 console.log("Error" + xhr + textStatus + errorThrown);
 		}
 });    
+	
+	$("#tweetForm").keyup(function (event) {
+		   /*
+		       Update character count and disable submit 
+		       button after 140 characters.
+		   */
+		       var max = 140; 
+		       var length = $(".tweet").val().length;
+		       $("#count").text((max - length));
+		       
+		       if (length > 140) {
+		           console.log(length);
+		           $("#tweet").prop("disabled", true);
+		       } else {
+		           console.log(length);
+		           $("#tweet").prop("disabled", false);
+		       };
+		   }); 
+
 	
 	//To check current user
 function checkCurrentUser(id){	
@@ -28,11 +46,11 @@ function checkCurrentUser(id){
         url: 'http://localhost:3000/blog/'+id,
         type: 'GET',
         dataType: 'json',
+        async: false, 
         success: function (data) {
        
         	var str = ""+data.approvedBy;
         	votedUsers = str.split(",");
-         	//alert("approver : "+data.approvedBy+"   user : "+votedUsers[0]+"  created by :  "+data.createdby+" username : "+username);
         	
         	if(data.createdby === username)
         		{
@@ -40,9 +58,8 @@ function checkCurrentUser(id){
         		}
         	else
         	{
-        		//alert("in str : "+str);
         		for (str in votedUsers ) {
-        		
+        			
         			if(str === username)
         	    	{
         	    	    temp = false;
@@ -55,9 +72,10 @@ function checkCurrentUser(id){
             console.log("Error" + xhr + textStatus + errorThrown);
         }
 	});
+ 
 		return temp;
-	//alert("falg = "+flag);
 }();
+
 return flag;
 }
 
@@ -99,7 +117,7 @@ function getCurrentDate()
 	            });
 	            $(".tweet").val("");
 	        } else {
-	            window.alert("Please enter the actor's name.");
+	            window.alert("Please enter the tweet.");
 	        }
 	    });
 
@@ -110,13 +128,9 @@ function getCurrentDate()
 	            dataType: "json",
 	            success: function (data) {
 	                $.each(data, function (x, value) {
-	                    
-	                    if(value.postedOnTwitter){
-	                        $(".voted").append(loadVotedTweets(value));
-	                    }
-	                    else{
+	                   
 	                        $(".blogs").append(loadNewTweets(value));
-	                    }
+	                    
 	                });
 	            },
 	            error: function (xhr, textStatus, errorThrown) {
@@ -128,15 +142,12 @@ function getCurrentDate()
 	    
 	    function loadNewTweets(tweet) {
 	        var blog = "";
-	        blog += "<div class=\"panel panel-primary\"><div class=\"panel-heading\"><h3 class=\"panel-title\">Tweets</h3>";
+	        blog += "<div class=\"panel panel-primary\"><div class=\"panel-heading\"><h3 class=\"panel-title\">Tweet by:"+tweet.createdby+" on "+tweet.date+"</h3>";
 	        blog += "</div><div class=\"panel-body\">" + tweet.text + "</div><div id=\"demo\"class=\"panel-footer textright\">";
-	       alert( "status : "+checkCurrentUser(tweet.id));
 	       var result = checkCurrentUser(tweet.id);
-	       //alert("status : "+result);
 	       if(result)
 	    	   {
 		        blog += "<button class=\"btn like btn-warning\"><span class=\"glyphicon glyphicon-thumbs-up\" aria-hidden=\"true\"></span> Votes <span class=\"likes\" id=" + tweet.id + ">" + tweet.votes + "</span></button>";
-
 	    	   }
 	       else
 	    	   {
@@ -147,22 +158,19 @@ function getCurrentDate()
 	        return blog;
 	    };
 	    
-	    function loadVotedTweets(tweet) {
-	     
-	        var blog = "";
-	        blog += "<div class=\"panel panel-primary\"><div class=\"panel-heading\"><h3 class=\"panel-title\">Tweets</h3></div><div class=\"panel-body\">";
-	        blog += "</div><div class=\"panel-body\">" + tweet.text + "</div><div id=\"demo\"class=\"panel-footer textright\">";
-	        blog += "<span class=\"glyphicon glyphicon-thumbs-up\" aria-hidden=\"true\"></span> Votes <span class=\"likes\" id=" + tweet.id + ">" + tweet.votes + "</span>";
-	        blog += "</div></div>"
-	        	
-	        return blog;
-	    };
+	    
 	    
 
 	    display();
 
 	    
 	    $(".blogs").on("click","button",function(){
+	    	
+	    	$("#f1").submit(function(event){
+
+	    	    event.preventDefault();
+	    	})
+	    	
 	        var id=this.lastChild.id;
 	        var parent=this.parentNode;
 	        var votes=this.lastChild.innerHTML;
@@ -185,7 +193,13 @@ function getCurrentDate()
 	    	        approvedBy = data.approvedBy+', '+username;
 	    	        
 	    	        updateDb(votes, date, text, postedOnTwitter, createdby, approvedBy);
-	    	    
+	    	        var count =  getUserCount();
+	    	        
+	    	        
+	    	        if(votes >= count)
+	    	        	tweetPost(text,this);
+	    	        
+	    	        
 	            },
 	            error: function (xhr, textStatus, errorThrown) {
 	                console.log("Error" + xhr + textStatus + errorThrown);
@@ -218,5 +232,62 @@ function getCurrentDate()
 	             }); 
 	   }
 	    });
-	
 	});
+
+
+
+function tweetPost(text,id){
+	//id.parentNode.parentNode.hide();
+	$.ajax({
+
+            url: 'http://localhost:7012/postTweet',
+            type: 'Post',
+            dataType: 'json',
+            contentType: "application/json",
+            data: JSON.stringify({status: text}),
+            success: function (data) {
+              
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                console.log("Error" + xhr + textStatus + errorThrown);
+            }
+        });
+     
+ }
+
+    
+    function getUserCount(){
+    	
+    var flag= function(){
+    		var temp = 0;	
+        	$.ajax({
+        			url: 'http://localhost:3000/users',
+        			type: 'GET',
+        			dataType: 'json',
+        			 async: false, 
+        			success: function (data) {
+        				$.each(data, function(index) {
+        					temp =  temp+1; 
+        				});
+        				
+        			},
+        error: function (xhr, textStatus, errorThrown) {
+            console.log("Error" + xhr + textStatus + errorThrown);
+        }
+       
+    });
+        	 return temp; 
+}();
+
+return flag;     
+
+}
+    		
+    		
+    
+    
+    
+    
+    
+    
+  

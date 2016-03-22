@@ -1,10 +1,6 @@
 /**
  * http://usejsdoc.org/
  */
-$( document ).ready(function() {
-    //console.log( "ready!" );
-    
-});
 var  session;
 var email;
 var pass;
@@ -18,7 +14,6 @@ function updateSessionData(session)
 	    event.preventDefault();
 	})
 	
-	alert("in update");
 	$.ajax({
 							 url: 'http://localhost:3000/session/',
 							 type: 'post',
@@ -52,10 +47,7 @@ function signup(){
 	
       var email = $("#inputEmail").val();
       var pass = $("#inputPassword").val();
-      var session=null;
-
-      alert("in sign up : "+email);
-    
+      var session=null;    
     	
     $.ajax({
 				url: 'http://localhost:3000/users/',
@@ -68,9 +60,7 @@ function signup(){
 				success: function(data) {
 					
 							session = data.id;
-							alert("id : "+session);
 							updateSessionData(session);
-							
 							
 				},
 				error: function(xhr, textStatus, errorThrown) {
