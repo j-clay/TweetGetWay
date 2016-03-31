@@ -116,6 +116,7 @@ function getCurrentDate()
 	                }
 	            });
 	            $(".tweet").val("");
+	            $("#count").text(140);
 	        } else {
 	            window.alert("Please enter the tweet.");
 	        }
